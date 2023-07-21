@@ -1,14 +1,14 @@
 library time_utils;
 
 //TODO Code based on ru locale date format. Check how does it work on other locales
-String formattedDateTime(DateTime dt, {bool adaptiveToNow: false}) {
-  if (dt == null) return null;
-  var t = dt.toString();
-  var lastIndexOf = t.lastIndexOf(':');
-  if (lastIndexOf < 0) return null;
+String formattedDateTime(DateTime dt, {bool adaptiveToNow = false}) {
+  final t = dt.toString();
+  final lastIndexOf = t.lastIndexOf(':');
+  if (lastIndexOf < 0)
+    throw Exception('DateTime string [$t] does not contain colon [:]');
   var formatted = t.substring(0, lastIndexOf);
   if (adaptiveToNow) {
-    var now = DateTime.now();
+    final now = DateTime.now();
     if (dt.day == now.day)
       formatted = formatted.substring(formatted.indexOf(' ') + 1);
   }
@@ -16,22 +16,20 @@ String formattedDateTime(DateTime dt, {bool adaptiveToNow: false}) {
 }
 
 String formattedTime(int t, {bool adaptiveToNow: false}) {
-  if (t == null) return null;
-  var dateTime = DateTime.fromMillisecondsSinceEpoch(t);
+  final dateTime = DateTime.fromMillisecondsSinceEpoch(t);
   return formattedDateTime(dateTime, adaptiveToNow: adaptiveToNow);
 }
 
 String hhMmFromTime(int t) {
-  assert(t != null);
-  var minute = 1000 * 60;
-  var hour = minute * 60;
+  const minute = 1000 * 60;
+  const hour = minute * 60;
   if (t < hour) {
-    var minutes = (t / minute).round();
-    return "$minutes мин";
+    final minutes = (t / minute).round();
+    return '$minutes мин';
   }
-  var hours = t ~/ hour;
-  var minutes = ((t - hour * hours) / minute).round();
-  return "$hours ч $minutes мин";
+  final hours = t ~/ hour;
+  final minutes = ((t - hour * hours) / minute).round();
+  return '$hours ч $minutes мин';
 }
 
 String beautyTime(int secs) {
