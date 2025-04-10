@@ -15,7 +15,7 @@ String formattedDateTime(DateTime dt, {bool adaptiveToNow = false}) {
   return formatted;
 }
 
-String formattedTime(int t, {bool adaptiveToNow: false}) {
+String formattedTime(int t, {bool adaptiveToNow = false}) {
   final dateTime = DateTime.fromMillisecondsSinceEpoch(t);
   return formattedDateTime(dateTime, adaptiveToNow: adaptiveToNow);
 }

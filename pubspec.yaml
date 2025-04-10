@@ -1,17 +1,18 @@
 name: time_utils
 description: Set of often used date time formatting functions
 version: 0.0.1
-author:
-homepage:
+#author:
+#homepage:
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
+  sdk: ^3.7.0
 
 dependencies:
   flutter:
     sdk: flutter
 
 dev_dependencies:
+  flutter_lints: ^5.0.0
   flutter_test:
     sdk: flutter
 
@@ -19,7 +20,7 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
-flutter:
+  #flutter:
 
   # To add assets to your package, add an assets section, like this:
   # assets:
